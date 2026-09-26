@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 21: Đặt lịch tái khám - bookFollowUpAppointment()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">📅 Phiếu Đặt Hẹn Tái Khám Sau Điều Trị</h2>
+        <form id="followUpForm" onsubmit="handleFollowUpSubmit(event)">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Chọn Bệnh nhân (*)</label>
+              <select id="followUpPatientSelect" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bác sĩ tái khám (*)</label>
+              <select id="followUpDoctorSelect" class="form-control" required></select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Ngày hẹn tái khám (*)</label>
+              <input type="date" id="followUpDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Giờ hẹn (*)</label>
+              <select id="followUpTime" class="form-control" required>
+                <option value="08:30">08:30</option>
+                <option value="09:15">09:15</option>
+                <option value="10:00">10:00</option>
+                <option value="10:45">10:45</option>
+                <option value="14:00">14:00</option>
+                <option value="14:45">14:45</option>
+                <option value="15:30">15:30</option>
+                <option value="16:15">16:15</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mục đích tái khám (*)</label>
+            <textarea id="followUpPurpose" class="form-control" placeholder="Cắt chỉ sau nhổ răng khôn, kiểm tra tủy răng R36, siết mắc cài niềng răng định kỳ..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>📅 Thực thi bookFollowUpAppointment()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📋 Danh Sách Các Lịch Tái Khám Đã Lên</h2>
+        <div id="followUpsListContainer" style="display:flex; flex-direction:column; gap:12px; max-height:550px; overflow-y:auto;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/21-book-follow-up-appointment.js"></script>
+</body>
+</html>

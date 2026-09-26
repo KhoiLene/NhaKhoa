@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 11: Đổi lịch khám - rescheduleAppointment()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">🔄 Đổi Lịch Hẹn Khám</h2>
+        <form id="rescheduleForm" onsubmit="handleRescheduleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Chọn Lịch hẹn cần đổi (*)</label>
+            <select id="rescheduleApptSelect" class="form-control" onchange="loadSelectedAppointment()" required></select>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Ngày khám mới (*)</label>
+              <input type="date" id="newDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Giờ khám mới (*)</label>
+              <select id="newTime" class="form-control" required>
+                <option value="08:00">08:00</option>
+                <option value="08:45">08:45</option>
+                <option value="09:30">09:30</option>
+                <option value="10:15">10:15</option>
+                <option value="11:00">11:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:15">14:15</option>
+                <option value="15:00">15:00</option>
+                <option value="15:45">15:45</option>
+                <option value="16:30">16:30</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Lý do đổi lịch</label>
+            <input type="text" id="rescheduleReason" class="form-control" placeholder="Bận việc gia đình, kẹt lịch công tác...">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>🔄 Thực thi rescheduleAppointment()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📅 Chi tiết Lịch hẹn hiện tại & Lịch sử đổi</h2>
+        <div id="currentApptDetailBox">
+          <p style="color:#64748b;">Vui lòng chọn lịch hẹn từ danh sách bên trái.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/11-reschedule-appointment.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "phong-kham-nha-khoa",
+  "version": "1.0.0",
+  "description": "Hệ thống quản lý Nha Khoa Nhóm 7 - Đầy đủ 23 chức năng chuẩn hóa qua Docker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

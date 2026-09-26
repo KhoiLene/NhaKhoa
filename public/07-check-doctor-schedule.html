@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 7: Kiểm tra lịch bác sĩ - checkDoctorSchedule()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="card" style="padding:20px;">
+      <h2 class="card-title">🔍 Tra cứu Lịch làm việc & Ca khám trống</h2>
+      <div class="grid-3" style="align-items:flex-end;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Chọn Bác sĩ</label>
+          <select id="scheduleDoctorSelect" class="form-control" onchange="handleDoctorChange()"></select>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Chọn Ngày khám</label>
+          <input type="date" id="scheduleDateInput" class="form-control" onchange="handleDoctorChange()">
+        </div>
+        <button class="btn btn-primary" onclick="handleDoctorChange()">
+          <span>📅 Thực thi checkDoctorSchedule()</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 class="card-title">👨‍⚕️ Thông tin Bác sĩ phụ trách</h3>
+        <div id="doctorProfileBox">
+          <p style="color:#64748b;">Đang tải thông tin bác sĩ...</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">
+          <span>⏰ Danh sách Khung giờ Khám trong ngày</span>
+          <span id="slotSummaryBadge" class="status-pill status-done">--</span>
+        </h3>
+        <div id="slotsGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:12px; margin-top:16px;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/07-check-doctor-schedule.js"></script>
+</body>
+</html>

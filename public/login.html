@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập Tập Trung - Nha Khoa Nhóm 7</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-container {
+      max-width: 960px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    @media (max-width: 768px) {
+      .login-container {
+        grid-template-columns: 1fr;
+        margin: 20px 12px;
+      }
+    }
+    .login-banner {
+      background: linear-gradient(135deg, #0d9488 0%, #0284c7 60%, #1e40af 100%);
+      color: #ffffff;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .login-banner h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .login-form-box {
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .role-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    .role-card:hover {
+      border-color: var(--primary);
+      background: #f0fdfa;
+      transform: translateY(-2px);
+    }
+    .role-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+    .role-card small {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .pwd-wrapper {
+      position: relative;
+    }
+    .pwd-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container" style="padding-top: 20px;">
+    <div style="text-align: center; margin-bottom: 10px;">
+      <a href="index.html" class="nav-back-link">← Quay lại Trang chủ & Checklist 23 chức năng</a>
+    </div>
+
+    <div class="login-container">
+      <!-- Left: Clinic Intro -->
+      <div class="login-banner">
+        <div>
+          <h2><span>🦷</span> Nha Khoa Nhóm 7</h2>
+          <p style="opacity: 0.92; line-height: 1.6; font-size: 0.95rem;">
+            Cổng đăng nhập tập trung duy nhất cho toàn bộ hệ thống phòng khám. Bệnh nhân, Bác sĩ, Lễ tân và Quản trị viên sử dụng chung cùng một trang đăng nhập tiện lợi.
+          </p>
+          <ul class="feature-list">
+            <li><span>✓</span> Tự động nhận diện vai trò & quyền hạn</li>
+            <li><span>✓</span> Kết nối trực tiếp Docker REST API :8080</li>
+            <li><span>✓</span> Bảo mật dữ liệu & Đồng bộ theo thời gian thực</li>
+            <li><span>✓</span> Trải nghiệm mượt mà, chuẩn thực tế phòng khám</li>
+          </ul>
+        </div>
+        <div style="font-size: 0.85rem; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 14px;">
+          Hotline tiếp nhận: <strong>1900 6868</strong> • Nha Khoa Nhóm 7
+        </div>
+      </div>
+
+      <!-- Right: Unified Login Form -->
+      <div class="login-form-box">
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 6px;">Đăng Nhập Hệ Thống</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
+          Đăng nhập với Tên tài khoản, SĐT hoặc Email
+        </p>
+
+        <form id="unifiedLoginForm" onsubmit="handleUnifiedLogin(event)">
+          <div class="form-group">
+            <label class="form-label">Tên đăng nhập / Số điện thoại / Email</label>
+            <input type="text" id="loginInput" class="form-control" placeholder="admin, bs_khoile, letan hoặc 0912345678" required autofocus>
+          </div>
+
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <label class="form-label">Mật khẩu</label>
+              <a href="javascript:void(0)" onclick="alertForgotPwd()" style="font-size:0.8rem; color:var(--primary); text-decoration:none;">Quên mật khẩu?</a>
+            </div>
+            <div class="pwd-wrapper">
+              <input type="password" id="passwordInput" class="form-control" placeholder="Nhập mật khẩu của bạn" required>
+              <button type="button" class="pwd-toggle" onclick="togglePasswordVisibility()">👁️</button>
+            </div>
+          </div>
+
+          <button type="submit" id="btnSubmitLogin" class="btn btn-primary btn-block" style="padding: 12px; font-size: 1rem;">
+            <span>🚀 Đăng Nhập Vào Hệ Thống</span>
+          </button>
+        </form>
+
+        <!-- 1-Click Quick Demo Login for User testing -->
+        <div style="margin-top: 22px; border-top: 1px dashed var(--border-color); padding-top: 16px;">
+          <p style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+            ⚡ Đăng nhập nhanh 1-Click (Tài khoản mẫu):
+          </p>
+          <div class="role-grid">
+            <div class="role-card" onclick="quickFillAndLogin('admin', 'admin123')">
+              <strong>👑 Admin Chung</strong>
+              <small>admin / admin123</small>
+            </div>
+            <div class="role-card" onclick="quickFillAndLogin('bs_khoile', 'doctor123')">
+              <strong>👨‍⚕️ BS. Lê Khôi</strong>
+              <small>bs_khoile / doctor123</small>
+            </div>
+            <div class="role-card" onclick="quickFillAndLogin('letan', 'letan123')">
+              <strong>👩‍💼 Lễ tân Huy</strong>
+              <small>letan / letan123</small>
+            </div>
+            <div class="role-card" onclick="quickFillAndLogin('0912345678', '123456')">
+              <strong>👤 Mai Anh Khoa</strong>
+              <small>0912345678 / 123456</small>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; font-size: 0.88rem; color: var(--text-muted);">
+          Chưa có hồ sơ bệnh nhân? <a href="01-register.html" style="color:var(--primary); font-weight:600; text-decoration:none;">Đăng ký khám ngay</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

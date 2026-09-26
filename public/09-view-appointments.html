@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 9: Xem lịch khám - viewAppointments()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="card" style="padding:16px;">
+      <div class="grid-4" style="align-items:flex-end;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Lọc theo Ngày</label>
+          <input type="date" id="filterDate" class="form-control" onchange="handleFilterAppointments()">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Lọc theo Bác sĩ</label>
+          <select id="filterDoctor" class="form-control" onchange="handleFilterAppointments()">
+            <option value="">-- Tất cả bác sĩ --</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Trạng thái</label>
+          <select id="filterStatus" class="form-control" onchange="handleFilterAppointments()">
+            <option value="">-- Tất cả trạng thái --</option>
+            <option value="Chờ khám">Chờ khám</option>
+            <option value="Đã tiếp nhận">Đã tiếp nhận</option>
+            <option value="Đang điều trị">Đang điều trị</option>
+            <option value="Đã hoàn thành">Đã hoàn thành</option>
+            <option value="Đã hủy">Đã hủy</option>
+          </select>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-secondary btn-block" onclick="resetFilters()">Đặt lại</button>
+          <a href="08-create-appointment.html" class="btn btn-primary btn-block">+ Đặt mới</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">
+        <span>Danh sách Lịch khám Phòng nha</span>
+        <span id="apptCountBadge" class="status-pill status-received">0 lịch khám</span>
+      </h2>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mã LH</th>
+              <th>Bệnh nhân</th>
+              <th>Bác sĩ</th>
+              <th>Dịch vụ dự kiến</th>
+              <th>Thời gian khám</th>
+              <th>Phòng khám</th>
+              <th>Trạng thái</th>
+              <th style="text-align:right;">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/09-view-appointments.js"></script>
+</body>
+</html>

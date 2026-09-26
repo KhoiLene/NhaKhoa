@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 2: Đăng nhập bệnh nhân - loginPatient()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">🔐 Đăng nhập Bệnh nhân</h2>
+        <form id="loginPatientForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Số điện thoại hoặc Email</label>
+            <input type="text" id="loginUsername" class="form-control" placeholder="0912345678" value="0912345678" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input type="password" id="loginPassword" class="form-control" placeholder="Mật khẩu" value="123456" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>🔑 Thực thi hàm loginPatient()</span>
+          </button>
+        </form>
+
+        <div style="margin-top:20px; padding:12px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:8px;">
+          <p style="font-size:0.85rem; color:#475569; margin-bottom:8px;">⚡ Tài khoản mẫu có sẵn trong Docker DB:</p>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="quickFill('0912345678', '123456')">
+            BN: Mai Anh Khoa (0912345678 / 123456)
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">👤 Trạng thái Phiên làm việc Bệnh nhân</h2>
+        <div id="patientSessionStatus">
+          <p style="color:#64748b;">Chưa đăng nhập bệnh nhân. Hãy nhập thông tin hoặc click tài khoản mẫu.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/02-login-patient.js"></script>
+</body>
+</html>

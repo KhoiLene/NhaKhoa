@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 19: Xác nhận điều trị - confirmTreatment()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">✍️ Biên Bản Xác Nhận Đồng Ý Điều Trị</h2>
+        <form id="confirmTreatmentForm" onsubmit="handleConfirmSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Chọn Kế hoạch / Phác đồ cần xác nhận (*)</label>
+            <select id="confirmPlanSelect" class="form-control" onchange="loadPlanDetailsForConfirm()" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Người ký xác nhận (*)</label>
+            <input type="text" id="confirmedByInput" class="form-control" placeholder="Họ tên Bệnh nhân hoặc Người giám hộ" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nội dung cam kết điều trị</label>
+            <textarea id="signatureNoteInput" class="form-control" rows="3">Bệnh nhân đã được bác sĩ giải thích rõ ràng về tình trạng bệnh lý, phương pháp can thiệp, tiến độ điều trị, rủi ro có thể xảy ra và toàn bộ chi phí. Bệnh nhân tự nguyện đồng ý thực hiện theo phác đồ.</textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom:20px;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="agreeTermsCheck" required>
+              <span style="font-weight:600; color:#1e293b;">Tôi đã hiểu rõ và đồng ý với phác đồ điều trị này</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-success btn-block">
+            <span>✍️ Thực thi confirmTreatment()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📋 Thông tin Phác đồ được Chọn</h2>
+        <div id="planDetailForConfirmBox">
+          <p style="color:#64748b;">Vui lòng chọn phác đồ từ danh sách bên trái.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/19-confirm-treatment.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 1: Đăng ký bệnh nhân - register()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">📝 Form Đăng ký Bệnh nhân Mới</h2>
+        <form id="registerForm" onsubmit="handleRegisterSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Họ và tên bệnh nhân (*)</label>
+            <input type="text" id="regName" class="form-control" placeholder="Ví dụ: Hoàng Minh Đức" required>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Số điện thoại (*) [Tên đăng nhập]</label>
+              <input type="tel" id="regPhone" class="form-control" placeholder="09xxxxxxxx" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mật khẩu (*)</label>
+              <input type="password" id="regPassword" class="form-control" placeholder="Tối thiểu 6 ký tự" required>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="regEmail" class="form-control" placeholder="duc.hoang@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ngày sinh</label>
+              <input type="date" id="regDob" class="form-control" value="1995-06-15">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Giới tính</label>
+              <select id="regGender" class="form-control">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Địa chỉ</label>
+              <input type="text" id="regAddress" class="form-control" placeholder="Số nhà, đường, quận/huyện...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tiền sử bệnh lý (dị ứng thuốc, tim mạch, tiểu đường...)</label>
+            <textarea id="regMedicalHistory" class="form-control" placeholder="Ghi chú tiền sử nếu có hoặc ghi 'Không'"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>💾 Thực thi hàm register()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📋 Thông tin & Kết quả thực thi</h2>
+        <div style="background:#f1f5f9; padding:16px; border-radius:8px; margin-bottom:16px;">
+          <h4 style="margin-bottom:8px; color:var(--primary-dark);">💡 Quy trình nghiệp vụ:</h4>
+          <ol style="margin-left:20px; font-size:0.9rem; line-height:1.6;">
+            <li>Bệnh nhân điền thông tin đăng ký tài khoản phòng khám.</li>
+            <li>Hàm <code>register()</code> gửi dữ liệu tới API <code>/api/register</code> qua Docker backend.</li>
+            <li>Hệ thống tự động cấp mã bệnh nhân và tài khoản liên kết.</li>
+            <li>Dữ liệu được lưu vĩnh viễn vào tệp dữ liệu Docker JSON DB.</li>
+          </ol>
+        </div>
+        <div id="registerResult" style="display:none; padding:16px; background:#dcfce7; border:1px solid #86efac; border-radius:8px;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/01-register.js"></script>
+</body>
+</html>

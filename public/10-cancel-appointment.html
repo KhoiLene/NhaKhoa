@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 10: Hủy lịch khám - cancelAppointment()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">❌ Hủy Lịch Hẹn Khám</h2>
+        <form id="cancelForm" onsubmit="handleCancelSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Chọn Lịch hẹn cần hủy (*)</label>
+            <select id="cancelApptSelect" class="form-control" onchange="loadAppointmentDetail()" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Lý do hủy hẹn (*)</label>
+            <textarea id="cancelReason" class="form-control" placeholder="Ví dụ: Bận đột xuất, đã khám ở cơ sở khác, muốn dời lịch sau..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-danger btn-block">
+            <span>🗑️ Thực thi hàm cancelAppointment()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📋 Chi tiết Lịch hẹn được chọn</h2>
+        <div id="apptDetailBox">
+          <p style="color:#64748b;">Vui lòng chọn lịch hẹn từ danh sách bên trái.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/10-cancel-appointment.js"></script>
+</body>
+</html>

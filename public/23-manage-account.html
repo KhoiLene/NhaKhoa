@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 23: Quản lý tài khoản - manageAccount()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="card" style="padding:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <h3 style="margin:0;">Danh Sách Tài Khoản Phân Quyền Người Dùng</h3>
+        <button class="btn btn-primary" onclick="openAddAccountModal()">
+          <span>➕ Tạo Tài Khoản Mới</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mã TK</th>
+              <th>Tên đăng nhập</th>
+              <th>Họ và Tên</th>
+              <th>Vai trò (Role)</th>
+              <th>Số điện thoại</th>
+              <th>Trạng thái</th>
+              <th>Ngày tạo</th>
+              <th style="text-align:right;">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="accountsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div id="accountModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
+      <div class="card" style="width:100%; max-width:550px; margin:20px;">
+        <h3 id="modalAccTitle" class="card-title">Tạo Tài Khoản Mới</h3>
+        <form id="accountForm" onsubmit="handleAccountFormSubmit(event)">
+          <input type="hidden" id="modalAccId">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Tên đăng nhập (Username) (*)</label>
+              <input type="text" id="modalAccUsername" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mật khẩu (*)</label>
+              <input type="password" id="modalAccPassword" class="form-control" placeholder="Để trống nếu không đổi">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Họ và tên (*)</label>
+              <input type="text" id="modalAccFullName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phân quyền vai trò (*)</label>
+              <select id="modalAccRole" class="form-control" required>
+                <option value="ADMIN">Quản trị viên (ADMIN)</option>
+                <option value="DOCTOR">Bác sĩ khám (DOCTOR)</option>
+                <option value="RECEPTIONIST">Lễ tân tiếp nhận (RECEPTIONIST)</option>
+                <option value="PATIENT">Bệnh nhân (PATIENT)</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Số điện thoại</label>
+              <input type="tel" id="modalAccPhone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="modalAccEmail" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Trạng thái hoạt động</label>
+            <select id="modalAccStatus" class="form-control">
+              <option value="Hoạt động">Hoạt động</option>
+              <option value="Tạm khóa">Tạm khóa</option>
+            </select>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="closeAccountModal()">Hủy</button>
+            <button type="submit" class="btn btn-primary">Lưu Tài Khoản</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/23-manage-account.js"></script>
+</body>
+</html>

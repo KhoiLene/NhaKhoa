@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 12: Tiếp nhận bệnh nhân - receivePatient()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="card">
+      <h2 class="card-title">
+        <span>Danh sách Bệnh nhân Chờ Tiếp nhận Tại Quầy Lễ Tân</span>
+        <button class="btn btn-secondary btn-sm" onclick="loadPendingReceives()">Làm mới</button>
+      </h2>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mã LH</th>
+              <th>Bệnh nhân</th>
+              <th>Số điện thoại</th>
+              <th>Bác sĩ chỉ định</th>
+              <th>Dịch vụ</th>
+              <th>Giờ hẹn</th>
+              <th>Trạng thái</th>
+              <th style="text-align:right;">Thao tác Tiếp nhận</th>
+            </tr>
+          </thead>
+          <tbody id="receiveTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal tiếp nhận -->
+    <div id="receiveModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
+      <div class="card" style="width:100%; max-width:500px; margin:20px;">
+        <h3 id="receiveModalTitle" class="card-title">Tiếp nhận Bệnh nhân vào Ghế khám</h3>
+        <form id="receiveForm" onsubmit="handleReceiveSubmit(event)">
+          <input type="hidden" id="receiveApptId">
+          <div class="form-group">
+            <label class="form-label">Phân bổ Ghế / Phòng khám (*)</label>
+            <select id="receiveRoom" class="form-control" required>
+              <option value="Ghế 01 - Phòng Khám Tổng Quát">Ghế 01 - Phòng Khám Tổng Quát</option>
+              <option value="Ghế 02 - Phòng Chỉnh Nha & Niềng Răng">Ghế 02 - Phòng Chỉnh Nha & Niềng Răng</option>
+              <option value="Ghế 03 - Phòng Tiểu Phẫu Vô Trùng & Implant">Ghế 03 - Phòng Tiểu Phẫu Vô Trùng & Implant</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ghi chú tiếp nhận của lễ tân</label>
+            <input type="text" id="receiveNote" class="form-control" value="Bệnh nhân đã đến đúng giờ, đo huyết áp bình thường.">
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="closeReceiveModal()">Hủy</button>
+            <button type="submit" class="btn btn-success">
+              <span>🩺 Thực thi receivePatient()</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/12-receive-patient.js"></script>
+</body>
+</html>

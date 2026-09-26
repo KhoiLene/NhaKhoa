@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 3: Đăng nhập Admin / Bác sĩ - loginAdmin()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">🛡️ Đăng nhập Quản trị & Nhân viên Y tế</h2>
+        <form id="loginAdminForm" onsubmit="handleAdminLogin(event)">
+          <div class="form-group">
+            <label class="form-label">Tên đăng nhập (Username)</label>
+            <input type="text" id="adminUsername" class="form-control" placeholder="admin" value="admin" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input type="password" id="adminPassword" class="form-control" placeholder="Mật khẩu" value="admin123" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>🔐 Thực thi hàm loginAdmin()</span>
+          </button>
+        </form>
+
+        <div style="margin-top:20px;">
+          <h4 style="font-size:0.9rem; margin-bottom:8px; color:var(--text-muted);">⚡ Click đăng nhập nhanh theo vai trò:</h4>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="btn btn-secondary btn-sm" onclick="quickLoginAdmin('admin', 'admin123')">
+              👑 Quyền Quản trị viên (admin / admin123)
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="quickLoginAdmin('bs_khoile', 'doctor123')">
+              👨‍⚕️ Quyền Bác sĩ Lê Khôi (bs_khoile / doctor123)
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="quickLoginAdmin('letan', 'letan123')">
+              👩‍💼 Quyền Lễ tân Tiếp nhận (letan / letan123)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📋 Thông tin Tài khoản Quản trị</h2>
+        <div id="adminSessionStatus"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/03-login-admin.js"></script>
+</body>
+</html>

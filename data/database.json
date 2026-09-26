@@ -1,0 +1,412 @@
+{
+  "patients": [
+    {
+      "id": "BN001",
+      "name": "Mai Anh Khoa",
+      "phone": "0912345678",
+      "email": "maianhkhoa@gmail.com",
+      "dob": "1992-05-14",
+      "gender": "Nam",
+      "address": "123 Cầu Giấy, Hà Nội",
+      "medicalHistory": "Dị ứng Penicillin nhẹ",
+      "createdAt": "2026-09-01T08:30:00.000Z"
+    },
+    {
+      "id": "BN002",
+      "name": "Trần Thị Mai",
+      "phone": "0987654321",
+      "email": "mai.tran@gmail.com",
+      "dob": "1998-11-20",
+      "gender": "Nữ",
+      "address": "45 Hai Bà Trưng, Hà Nội",
+      "medicalHistory": "Không có tiền sử bệnh lý",
+      "createdAt": "2026-09-05T09:15:00.000Z"
+    },
+    {
+      "id": "BN003",
+      "name": "Lê Hoàng Nam",
+      "phone": "0905123987",
+      "email": "nam.le@gmail.com",
+      "dob": "1985-08-30",
+      "gender": "Nam",
+      "address": "78 Nguyễn Trãi, Thanh Xuân, Hà Nội",
+      "medicalHistory": "Huyết áp cao nhẹ",
+      "createdAt": "2026-09-10T14:00:00.000Z"
+    },
+    {
+      "id": "BN004",
+      "name": "B?nh nh�n Ki?m Th?",
+      "phone": "0999888777",
+      "email": "test@nhakhoa.vn",
+      "dob": "2000-01-01",
+      "gender": "Nam",
+      "address": "H� N?i",
+      "medicalHistory": "Kh�ng",
+      "createdAt": "2026-09-26T01:38:16.842Z"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "BS001",
+      "name": "BS. Lê Khôi",
+      "specialty": "Răng Hàm Mặt & Phục hình thẩm mỹ",
+      "phone": "0933112233",
+      "email": "khoile@nhakhoa.vn",
+      "schedule": [
+        "Thứ 2",
+        "Thứ 3",
+        "Thứ 4",
+        "Thứ 5",
+        "Thứ 6",
+        "Thứ 7"
+      ],
+      "workHours": "08:00 - 17:30",
+      "experience": "10 năm kinh nghiệm tại BV Răng Hàm Mặt"
+    },
+    {
+      "id": "BS002",
+      "name": "ThS. BS Trần Minh Hương",
+      "specialty": "Chỉnh nha - Niềng răng chuyên sâu",
+      "phone": "0944223344",
+      "email": "minhhuong@nhakhoa.vn",
+      "schedule": [
+        "Thứ 2",
+        "Thứ 4",
+        "Thứ 6",
+        "Chủ nhật"
+      ],
+      "workHours": "08:30 - 18:00",
+      "experience": "8 năm kinh nghiệm niềng răng mắc cài & Invisalign"
+    },
+    {
+      "id": "BS003",
+      "name": "BS. CKII Lê Quốc Bảo",
+      "specialty": "Cấy ghép Implant & Tiểu phẫu răng khôn",
+      "phone": "0955334455",
+      "email": "quocbao@nhakhoa.vn",
+      "schedule": [
+        "Thứ 3",
+        "Thứ 5",
+        "Thứ 7"
+      ],
+      "workHours": "08:00 - 17:00",
+      "experience": "15 năm kinh nghiệm phẫu thuật hàm mặt & Implant"
+    }
+  ],
+  "services": [
+    {
+      "id": "DV001",
+      "name": "Khám tổng quát & Tư vấn lập kế hoạch",
+      "price": 100000,
+      "unit": "Lần",
+      "description": "Khám răng miệng toàn diện, chụp hình kiểm tra, tư vấn phác đồ",
+      "warranty": "Không"
+    },
+    {
+      "id": "DV002",
+      "name": "Lấy cao răng & Đánh bóng siêu âm",
+      "price": 250000,
+      "unit": "Liệu trình",
+      "description": "Làm sạch mảng bám, vôi răng, ngăn ngừa viêm nướu và hôi miệng",
+      "warranty": "Khám lại miễn phí 6 tháng"
+    },
+    {
+      "id": "DV003",
+      "name": "Trám răng thẩm mỹ Composite",
+      "price": 400000,
+      "unit": "Răng",
+      "description": "Hàn phục hồi răng sâu, mẻ bằng vật liệu composite 3M USA",
+      "warranty": "12 tháng"
+    },
+    {
+      "id": "DV004",
+      "name": "Điều trị tủy răng công nghệ sóng âm",
+      "price": 1500000,
+      "unit": "Răng",
+      "description": "Diệt khuẩn tủy triệt để, trám bít ống tủy sinh học không đau",
+      "warranty": "24 tháng"
+    },
+    {
+      "id": "DV005",
+      "name": "Nhổ răng khôn mọc lệch (tiểu phẫu Piezotome)",
+      "price": 2000000,
+      "unit": "Răng",
+      "description": "Nhổ răng khôn an toàn bằng sóng siêu âm cao tần, giảm sưng đau",
+      "warranty": "Cắt chỉ và tái khám miễn phí"
+    },
+    {
+      "id": "DV006",
+      "name": "Bọc răng sứ Cercon HT cao cấp",
+      "price": 5000000,
+      "unit": "Răng",
+      "description": "Răng toàn sứ thẩm mỹ chịu lực gấp 5 lần răng thật, bảo hành chính hãng",
+      "warranty": "10 năm"
+    },
+    {
+      "id": "DV007",
+      "name": "Niềng răng mắc cài kim loại tự buộc",
+      "price": 32000000,
+      "unit": "2 hàm",
+      "description": "Chỉnh nha toàn diện kéo răng hô, móm, khấp khểnh về đúng khớp cắn",
+      "warranty": "Trọn gói phác đồ điều trị"
+    },
+    {
+      "id": "DV008",
+      "name": "Cấy ghép trụ Implant Dentium Hàn Quốc",
+      "price": 14500000,
+      "unit": "Trụ",
+      "description": "Khôi phục chân răng đã mất, tích hợp xương nhanh, ăn nhai như răng thật",
+      "warranty": "15 năm"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "LH001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "patientPhone": "0912345678",
+      "doctorId": "BS001",
+      "doctorName": "BS. Lê Khôi",
+      "serviceId": "DV002",
+      "serviceName": "Lấy cao răng & Đánh bóng siêu âm",
+      "date": "2026-09-26",
+      "time": "09:00",
+      "status": "Đã tiếp nhận",
+      "room": "Phòng khám 01",
+      "notes": "Răng hay bị ê buốt khi ăn đồ lạnh",
+      "createdAt": "2026-09-25T10:00:00.000Z"
+    },
+    {
+      "id": "LH002",
+      "patientId": "BN002",
+      "patientName": "Trần Thị Mai",
+      "patientPhone": "0987654321",
+      "doctorId": "BS002",
+      "doctorName": "ThS. BS Trần Minh Hương",
+      "serviceId": "DV007",
+      "serviceName": "Niềng răng mắc cài kim loại tự buộc",
+      "date": "2026-09-26",
+      "time": "10:30",
+      "status": "Chờ khám",
+      "room": "Phòng Chỉnh nha 02",
+      "notes": "Khám tư vấn niềng răng khấp khểnh hàm trên",
+      "createdAt": "2026-09-25T14:30:00.000Z"
+    },
+    {
+      "id": "LH003",
+      "patientId": "BN003",
+      "patientName": "Lê Hoàng Nam",
+      "patientPhone": "0905123987",
+      "doctorId": "BS003",
+      "doctorName": "BS. CKII Lê Quốc Bảo",
+      "serviceId": "DV005",
+      "serviceName": "Nhổ răng khôn mọc lệch (tiểu phẫu Piezotome)",
+      "date": "2026-09-27",
+      "time": "14:00",
+      "status": "Chờ khám",
+      "room": "Phòng Tiểu phẫu 03",
+      "notes": "Đau nhức vùng hàm dưới bên phải, sưng nướu",
+      "createdAt": "2026-09-25T16:00:00.000Z"
+    }
+  ],
+  "examinations": [
+    {
+      "id": "KB001",
+      "appointmentId": "LH001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "doctorId": "BS001",
+      "doctorName": "BS. Lê Khôi",
+      "date": "2026-09-26T09:15:00.000Z",
+      "clinicalFindings": "Vôi răng độ 2 hai hàm, tụt nướu nhẹ răng 36 và 46. Răng 47 có lỗ sâu mặt nhai men ngà nông.",
+      "teeth": [
+        "36",
+        "46",
+        "47"
+      ],
+      "diagnosis": "Viêm nướu do vôi răng + Sâu răng ngà nông R47",
+      "xrayRequired": true,
+      "recommendations": "Chỉ định lấy cao răng hai hàm + Trám phục hồi răng composite R47. Hướng dẫn vệ sinh răng miệng bằng chỉ nha khoa."
+    }
+  ],
+  "treatmentRecords": [
+    {
+      "id": "HS001",
+      "examinationId": "KB001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "doctorId": "BS001",
+      "doctorName": "BS. Lê Khôi",
+      "date": "2026-09-26T09:30:00.000Z",
+      "diagnosis": "Sâu răng ngà sâu R46, viêm nướu mạn tính",
+      "treatmentMethod": "Lấy sạch ngà mủn, hàn lót Dycal, trám composite xoang II",
+      "progressNotes": "Bệnh nhân dung nạp thuốc tê tốt, không đau, vết trám bóng nhẵn, khớp cắn chuẩn.",
+      "doctorNotes": "Theo dõi tủy trong 2 tuần, nếu có triệu chứng đau nhức đêm cần tái khám nội nha ngay."
+    }
+  ],
+  "serviceAssignments": [
+    {
+      "id": "CD001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "doctorId": "BS001",
+      "doctorName": "BS. Lê Khôi",
+      "date": "2026-09-26T09:35:00.000Z",
+      "services": [
+        {
+          "serviceId": "DV002",
+          "serviceName": "Lấy cao răng & Đánh bóng siêu âm",
+          "quantity": 1,
+          "price": 250000
+        },
+        {
+          "serviceId": "DV003",
+          "serviceName": "Trám răng thẩm mỹ Composite",
+          "quantity": 1,
+          "price": 400000
+        }
+      ],
+      "totalAmount": 650000,
+      "status": "Đã xác nhận"
+    }
+  ],
+  "treatmentPlans": [
+    {
+      "id": "KH001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "doctorId": "BS001",
+      "doctorName": "BS. Lê Khôi",
+      "planName": "Kế hoạch điều trị phục hồi răng R47 & Vệ sinh nha chu",
+      "stages": [
+        {
+          "stageNumber": 1,
+          "title": "Giai đoạn 1: Lấy cao răng & kiểm soát viêm nướu",
+          "duration": "1 buổi",
+          "estimatedCost": 250000,
+          "status": "Đã hoàn thành"
+        },
+        {
+          "stageNumber": 2,
+          "title": "Giai đoạn 2: Trám thẩm mỹ R47",
+          "duration": "1 buổi",
+          "estimatedCost": 400000,
+          "status": "Đang thực hiện"
+        }
+      ],
+      "totalEstimatedCost": 650000,
+      "discount": 50000,
+      "finalCost": 600000,
+      "patientConfirmed": true,
+      "confirmedAt": "2026-09-26T09:40:00.000Z",
+      "status": "Đang thực hiện"
+    }
+  ],
+  "payments": [
+    {
+      "id": "TT001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "treatmentPlanId": "KH001",
+      "serviceAssignmentId": "CD001",
+      "totalAmount": 650000,
+      "discount": 50000,
+      "amountPaid": 600000,
+      "debt": 0,
+      "paymentMethod": "Chuyển khoản QR",
+      "paymentDate": "2026-09-26T09:45:00.000Z",
+      "cashier": "Lễ tân Huy",
+      "status": "Đã thanh toán"
+    }
+  ],
+  "followUps": [
+    {
+      "id": "TK001",
+      "patientId": "BN001",
+      "patientName": "Mai Anh Khoa",
+      "patientPhone": "0912345678",
+      "doctorId": "BS001",
+      "doctorName": "BS. Lê Khôi",
+      "followUpDate": "2026-10-10",
+      "followUpTime": "09:30",
+      "purpose": "Tái khám kiểm tra mối hàn Composite R47 và sức khỏe mô nướu",
+      "status": "Đã lên lịch"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "ACC001",
+      "username": "admin",
+      "password": "admin123",
+      "role": "ADMIN",
+      "fullName": "Admin Chung",
+      "phone": "0900000001",
+      "email": "admin.chung@nhakhoa.vn",
+      "status": "Hoạt động",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "aliases": [
+        "chung",
+        "admin_chung"
+      ]
+    },
+    {
+      "id": "ACC002",
+      "username": "letan",
+      "password": "letan123",
+      "role": "RECEPTIONIST",
+      "fullName": "Lễ tân Huy",
+      "phone": "0900000002",
+      "email": "letan.huy@nhakhoa.vn",
+      "status": "Hoạt động",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "aliases": [
+        "huy",
+        "letan_huy"
+      ]
+    },
+    {
+      "id": "ACC003",
+      "username": "bs_khoile",
+      "password": "doctor123",
+      "role": "DOCTOR",
+      "fullName": "BS. Lê Khôi",
+      "phone": "0933112233",
+      "email": "khoile@nhakhoa.vn",
+      "doctorId": "BS001",
+      "status": "Hoạt động",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "aliases": [
+        "khoile",
+        "bs_khoi"
+      ]
+    },
+    {
+      "id": "ACC004",
+      "username": "0912345678",
+      "password": "123456",
+      "role": "PATIENT",
+      "fullName": "Mai Anh Khoa",
+      "phone": "0912345678",
+      "email": "maianhkhoa@gmail.com",
+      "patientId": "BN001",
+      "status": "Hoạt động",
+      "createdAt": "2026-09-01T08:30:00.000Z",
+      "aliases": [
+        "maianhkhoa",
+        "khoa"
+      ]
+    },
+    {
+      "id": "ACC005",
+      "username": "0999888777",
+      "password": "password123",
+      "role": "PATIENT",
+      "fullName": "B?nh nh�n Ki?m Th?",
+      "phone": "0999888777",
+      "email": "test@nhakhoa.vn",
+      "patientId": "BN004",
+      "status": "Hoạt động",
+      "createdAt": "2026-09-26T01:38:16.842Z"
+    }
+  ]
+}

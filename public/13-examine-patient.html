@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 13: Khám lâm sàng - examinePatient()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">🩺 Phiếu Khám Lâm Sàng Răng Hàm Mặt</h2>
+        <form id="examineForm" onsubmit="handleExamineSubmit(event)">
+          <input type="hidden" id="examAppointmentId">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Chọn Bệnh nhân (*)</label>
+              <select id="examPatientSelect" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bác sĩ khám (*)</label>
+              <select id="examDoctorSelect" class="form-control" required></select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tình trạng răng & Khám lâm sàng (*)</label>
+            <textarea id="examClinicalFindings" class="form-control" placeholder="Mô tả: Men răng ố vàng, vôi răng mảng bám độ 2, răng 36 lung lay độ 1..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Vị trí các răng tổn thương (ví dụ: 11, 26, 36, 47, 48)</label>
+            <input type="text" id="examTeeth" class="form-control" placeholder="36, 47, 48">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Kết luận Chẩn đoán Bệnh lý (*)</label>
+            <input type="text" id="examDiagnosis" class="form-control" placeholder="Viêm tủy cấp R36 / Sâu men ngà R47 / Răng khôn R48 mọc lệch..." required>
+          </div>
+
+          <div class="form-group">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="examXray">
+              <span style="font-weight:600;">Chỉ định chụp phim X-quang Panorama / CT ConeBeam</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Hướng xử trí & Lời dặn Bác sĩ</label>
+            <textarea id="examRecommendations" class="form-control" placeholder="Chỉ định điều trị tủy + trám bít ống tủy + bọc răng sứ bảo vệ..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>🩺 Thực thi examinePatient()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📜 Lịch sử các ca Khám Gần đây</h2>
+        <div id="examinationList" style="display:flex; flex-direction:column; gap:12px; max-height:550px; overflow-y:auto;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/13-examine-patient.js"></script>
+</body>
+</html>

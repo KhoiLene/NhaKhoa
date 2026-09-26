@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 14: Lập hồ sơ điều trị - createTreatmentRecord()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">📝 Bệnh Án & Hồ Sơ Điều Trị Nha Khoa</h2>
+        <form id="recordForm" onsubmit="handleRecordSubmit(event)">
+          <input type="hidden" id="recExamId">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Chọn Bệnh nhân (*)</label>
+              <select id="recPatientSelect" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bác sĩ phụ trách (*)</label>
+              <select id="recDoctorSelect" class="form-control" required></select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Chẩn đoán xác định (*)</label>
+            <input type="text" id="recDiagnosis" class="form-control" placeholder="Viêm tủy không hồi phục R36, Viêm nha chu mạn tính..." required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Phương pháp & Kỹ thuật điều trị (*)</label>
+            <textarea id="recMethod" class="form-control" placeholder="Gây tê tại chỗ Lidocain 2%, mở tủy, đo chiều dài ống tủy bằng máy Apex Locator, tạo hình trâm quay ProTaper, bơm rửa NaOCl 3%, trám bít tủy bằng Gutta-percha..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Diễn biến ca thủ thuật & Phản ứng bệnh nhân</label>
+            <textarea id="recProgress" class="form-control" placeholder="Bệnh nhân hợp tác tốt, không đau nhức, cầm máu tốt, phim kiểm tra tủy đạt tiêu chuẩn..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Dặn dò & Hướng dẫn sau điều trị</label>
+            <textarea id="recNotes" class="form-control" placeholder="Không nhai đồ cứng trong 24h, uống thuốc theo đơn nếu đau nhẹ, tái khám sau 1 tuần..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>💾 Thực thi createTreatmentRecord()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📚 Danh sách Bệnh án đã lưu</h2>
+        <div id="recordsContainer" style="display:flex; flex-direction:column; gap:12px; max-height:550px; overflow-y:auto;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/14-create-treatment-record.js"></script>
+</body>
+</html>

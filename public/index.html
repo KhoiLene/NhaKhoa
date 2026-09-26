@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nha Khoa Nhóm 7 - Tổng Hợp Toàn Bộ 23 Chức Năng</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero-banner {
+      background: linear-gradient(135deg, #0d9488 0%, #0284c7 50%, #1e40af 100%);
+      color: #ffffff;
+      padding: 32px 24px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-banner h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .stat-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <h1>
+        <span>🦷 Nha Khoa Nhóm 7 - Hệ Thống Quản Lý Toàn Diện</span>
+      </h1>
+      <p style="opacity: 0.95; font-size: 1.05rem;">
+        Checklist toàn bộ 23 chức năng chuẩn hóa • Dữ liệu chạy trực tiếp qua Docker REST API (Port 8080) • Mỗi chức năng là một tệp HTML/JS riêng biệt
+      </p>
+      <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <span class="meta-chip">🐳 Docker Port: <strong>8080:8080</strong></span>
+        <span class="meta-chip">🗂️ Cấu trúc: <strong>23 HTML files & 23 JS files riêng biệt</strong></span>
+        <span class="meta-chip">⚡ Backend: <strong>Node.js Express REST API</strong></span>
+      </div>
+    </div>
+
+    <!-- Live Statistics Strip -->
+    <div class="grid-4" style="margin-bottom: 24px;">
+      <div class="stat-card">
+        <div class="stat-value" id="statPatients">--</div>
+        <div class="stat-label">Bệnh nhân trong hệ thống</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statDoctors">--</div>
+        <div class="stat-label">Bác sĩ nha khoa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statAppointments">--</div>
+        <div class="stat-label">Lịch hẹn đã ghi nhận</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statRevenue" style="color: #059669;">--</div>
+        <div class="stat-label">Tổng doanh thu viện phí</div>
+      </div>
+    </div>
+
+    <!-- Quick Role Switcher Panel -->
+    <div class="card" style="padding: 18px; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 style="font-size: 1rem; color: var(--text-main); margin-bottom: 4px;">🎭 Chuyển đổi vai trò trải nghiệm nhanh (1-Click):</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Mô phỏng quyền truy cập của từng người dùng trong Nha Khoa Nhóm 7</p>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-secondary btn-sm" onclick="demoSwitchRole('PATIENT')">👤 Bệnh nhân (Mai Anh Khoa)</button>
+          <button class="btn btn-secondary btn-sm" onclick="demoSwitchRole('DOCTOR')">👨‍⚕️ Bác sĩ (BS. Lê Khôi)</button>
+          <button class="btn btn-secondary btn-sm" onclick="demoSwitchRole('RECEPTIONIST')">👩‍💼 Lễ tân (Lễ tân Huy)</button>
+          <button class="btn btn-primary btn-sm" onclick="demoSwitchRole('ADMIN')">👑 Admin Quản trị (Admin Chung)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checklist Header & Filter Toolbar -->
+    <div class="card" style="padding: 16px; margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <h2 style="font-size: 1.2rem; font-weight: 700;">19. TỔNG HỢP TOÀN BỘ CHỨC NĂNG</h2>
+          <span class="status-pill status-done">23/23 Sẵn sàng</span>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="filter-btn active" onclick="filterFeatures('all', this)">Tất cả (23)</button>
+          <button class="filter-btn" onclick="filterFeatures('Bệnh nhân', this)">Bệnh nhân</button>
+          <button class="filter-btn" onclick="filterFeatures('Admin', this)">Admin</button>
+          <button class="filter-btn" onclick="filterFeatures('Bác sĩ', this)">Bác sĩ</button>
+          <button class="filter-btn" onclick="filterFeatures('Cả hai', this)">Cả hai / Hệ thống</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Checklist Format (Exact Match to Prompt) -->
+    <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 30px;">
+      <div class="table-responsive" style="border: none;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 60px; text-align: center;">STT</th>
+              <th style="width: 250px;">Chức năng</th>
+              <th style="width: 170px;">Người thực hiện</th>
+              <th style="width: 240px;">Hàm gợi ý</th>
+              <th>Tệp mã nguồn (.html & .js)</th>
+              <th style="text-align: right; width: 140px;">Truy cập</th>
+            </tr>
+          </thead>
+          <tbody id="checklistTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>🦷 <strong>Nha Khoa Nhóm 7</strong> • Hoàn thiện đầy đủ 23 chức năng checklist qua Docker Port 8080</p>
+    <p style="margin-top: 4px; font-size: 0.8rem; color: #94a3b8;">REST API • JSON Persistence Data Volume • Modularity 1 File / Chức năng</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script>
+    const FEATURES = [
+      { stt: 1, name: "Đăng ký bệnh nhân", role: "Bệnh nhân", func: "register()", html: "01-register.html", js: "js/01-register.js", desc: "Tạo hồ sơ bệnh nhân và tài khoản mới" },
+      { stt: 2, name: "Đăng nhập bệnh nhân", role: "Bệnh nhân", func: "loginPatient()", html: "02-login-patient.html", js: "js/02-login-patient.js", desc: "Đăng nhập bằng SĐT/Email và mật khẩu" },
+      { stt: 3, name: "Đăng nhập Admin", role: "Admin", func: "loginAdmin()", html: "03-login-admin.html", js: "js/03-login-admin.js", desc: "Đăng nhập Admin, Bác sĩ và Lễ tân" },
+      { stt: 4, name: "Đăng xuất", role: "Cả hai", func: "logout()", html: "04-logout.html", js: "js/04-logout.js", desc: "Hủy phiên làm việc an toàn" },
+      { stt: 5, name: "Quản lý bệnh nhân", role: "Admin", func: "add/update/delete/searchPatient()", html: "05-manage-patient.html", js: "js/05-manage-patient.js", desc: "Thêm, sửa, xóa, tìm kiếm bệnh nhân" },
+      { stt: 6, name: "Quản lý bác sĩ", role: "Admin", func: "add/update/delete/searchDoctor()", html: "06-manage-doctor.html", js: "js/06-manage-doctor.js", desc: "Thêm, sửa, xóa, tìm kiếm bác sĩ nha khoa" },
+      { stt: 7, name: "Kiểm tra lịch bác sĩ", role: "Admin/Bệnh nhân", func: "checkDoctorSchedule()", html: "07-check-doctor-schedule.html", js: "js/07-check-doctor-schedule.js", desc: "Xem chi tiết slot giờ trống của bác sĩ theo ngày" },
+      { stt: 8, name: "Đặt lịch", role: "Bệnh nhân/Admin", func: "createAppointment()", html: "08-create-appointment.html", js: "js/08-create-appointment.js", desc: "Tạo lịch hẹn khám và chống trùng slot" },
+      { stt: 9, name: "Xem lịch khám", role: "Bệnh nhân/Admin", func: "viewAppointments()", html: "09-view-appointments.html", js: "js/09-view-appointments.js", desc: "Tra cứu và lọc lịch khám theo trạng thái" },
+      { stt: 10, name: "Hủy lịch", role: "Bệnh nhân/Admin", func: "cancelAppointment()", html: "10-cancel-appointment.html", js: "js/10-cancel-appointment.js", desc: "Hủy lịch hẹn và giải phóng ca trực của bác sĩ" },
+      { stt: 11, name: "Đổi lịch", role: "Bệnh nhân/Admin", func: "rescheduleAppointment()", html: "11-reschedule-appointment.html", js: "js/11-reschedule-appointment.js", desc: "Dời ngày giờ khám và lưu lịch sử thay đổi" },
+      { stt: 12, name: "Tiếp nhận", role: "Admin", func: "receivePatient()", html: "12-receive-patient.html", js: "js/12-receive-patient.js", desc: "Check-in lễ tân, phân ghế khám cho bệnh nhân" },
+      { stt: 13, name: "Khám", role: "Bác sĩ", func: "examinePatient()", html: "13-examine-patient.html", js: "js/13-examine-patient.js", desc: "Khám lâm sàng răng bệnh lý, chỉ định X-quang" },
+      { stt: 14, name: "Lập hồ sơ điều trị", role: "Bác sĩ/Admin", func: "createTreatmentRecord()", html: "14-create-treatment-record.html", js: "js/14-create-treatment-record.js", desc: "Lập bệnh án y khoa và diễn biến thủ thuật" },
+      { stt: 15, name: "Chỉ định dịch vụ", role: "Bác sĩ", func: "assignService()", html: "15-assign-service.html", js: "js/15-assign-service.js", desc: "Bác sĩ chọn các dịch vụ kỹ thuật cần làm" },
+      { stt: 16, name: "Quản lý dịch vụ", role: "Admin", func: "add/update/deleteService()", html: "16-manage-service.html", js: "js/16-manage-service.js", desc: "Bảng giá dịch vụ, đơn giá, thời hạn bảo hành" },
+      { stt: 17, name: "Lập kế hoạch điều trị", role: "Bác sĩ", func: "createTreatmentPlan()", html: "17-create-treatment-plan.html", js: "js/17-create-treatment-plan.js", desc: "Phác đồ điều trị đa giai đoạn và dự toán chi phí" },
+      { stt: 18, name: "Báo giá", role: "Hệ thống/Admin", func: "calculateCost()", html: "18-calculate-cost.html", js: "js/18-calculate-cost.js", desc: "Tính tổng chi phí, chiết khấu và bảo hiểm chi trả" },
+      { stt: 19, name: "Xác nhận điều trị", role: "Bệnh nhân/Admin", func: "confirmTreatment()", html: "19-confirm-treatment.html", js: "js/19-confirm-treatment.js", desc: "Bệnh nhân ký cam kết đồng ý thực hiện phác đồ" },
+      { stt: 20, name: "Thanh toán", role: "Bệnh nhân/Admin", func: "makePayment()", html: "20-make-payment.html", js: "js/20-make-payment.js", desc: "Phiếu thu tiền viện phí (Tiền mặt, QR, Thẻ)" },
+      { stt: 21, name: "Đặt lịch tái khám", role: "Bệnh nhân/Admin", func: "bookFollowUpAppointment()", html: "21-book-follow-up-appointment.html", js: "js/21-book-follow-up-appointment.js", desc: "Hẹn tái khám sau thủ thuật, đồng bộ lịch khám" },
+      { stt: 22, name: "Xem lịch sử điều trị", role: "Bệnh nhân/Admin", func: "viewTreatmentHistory()", html: "22-view-treatment-history.html", js: "js/22-view-treatment-history.js", desc: "Dòng thời gian y bạ đầy đủ của bệnh nhân" },
+      { stt: 23, name: "Quản lý tài khoản", role: "Admin", func: "manageAccount()", html: "23-manage-account.html", js: "js/23-manage-account.js", desc: "Phân quyền vai trò, đổi mật khẩu và khóa tài khoản" }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTopNav(0, 'Dashboard', 'Hệ thống');
+      renderChecklist(FEATURES);
+      loadLiveStats();
+    });
+
+    function renderChecklist(list) {
+      const tbody = document.getElementById('checklistTableBody');
+      tbody.innerHTML = list.map(item => {
+        let roleBadge = 'role-guest';
+        if (item.role.includes('Bác sĩ')) roleBadge = 'role-doctor';
+        else if (item.role.includes('Admin')) roleBadge = 'role-admin';
+        else if (item.role.includes('Bệnh nhân')) roleBadge = 'role-patient';
+        else if (item.role.includes('Cả hai')) roleBadge = 'role-receptionist';
+
+        return `
+          <tr>
+            <td style="text-align: center;">
+              <span class="checklist-stt">${item.stt}</span>
+            </td>
+            <td>
+              <strong>${item.name}</strong>
+              <div style="font-size: 0.8rem; color: #64748b;">${item.desc}</div>
+            </td>
+            <td>
+              <span class="role-badge ${roleBadge}">${item.role}</span>
+            </td>
+            <td>
+              <code style="color: var(--primary-dark); font-weight: 700; background: var(--primary-light); padding: 3px 6px; border-radius: 4px;">
+                ${item.func}
+              </code>
+            </td>
+            <td style="font-size: 0.85rem; font-family: monospace;">
+              <div>📄 <a href="${item.html}" style="color: var(--accent); text-decoration: none;">${item.html}</a></div>
+              <div>⚡ <a href="${item.js}" style="color: var(--text-muted); text-decoration: none;">${item.js}</a></div>
+            </td>
+            <td style="text-align: right;">
+              <a href="${item.html}" class="btn btn-primary btn-sm">Mở chức năng →</a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterFeatures(category, btnElem) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btnElem) btnElem.classList.add('active');
+
+      if (category === 'all') {
+        renderChecklist(FEATURES);
+      } else {
+        const filtered = FEATURES.filter(f => f.role.toLowerCase().includes(category.toLowerCase()));
+        renderChecklist(filtered);
+      }
+    }
+
+    async function loadLiveStats() {
+      try {
+        const res = await fetch(`${API_BASE}/stats`);
+        const data = await res.json();
+        if (data.success) {
+          const s = data.stats;
+          document.getElementById('statPatients').innerText = s.patientCount;
+          document.getElementById('statDoctors').innerText = s.doctorCount;
+          document.getElementById('statAppointments').innerText = s.appointmentCount;
+          document.getElementById('statRevenue').innerText = formatCurrency(s.totalRevenue);
+        }
+      } catch (err) {
+        console.error('Lỗi tải thống kê:', err);
+      }
+    }
+
+    function demoSwitchRole(role) {
+      if (role === 'PATIENT') {
+        Session.setUser({
+          id: 'ACC004',
+          patientId: 'BN001',
+          name: 'Mai Anh Khoa',
+          phone: '0912345678',
+          role: 'PATIENT'
+        });
+        showToast('Đã chuyển sang vai trò: Bệnh nhân (Mai Anh Khoa)', 'success');
+      } else if (role === 'DOCTOR') {
+        Session.setUser({
+          id: 'ACC003',
+          doctorId: 'BS001',
+          name: 'BS. Lê Khôi',
+          username: 'bs_khoile',
+          role: 'DOCTOR'
+        });
+        showToast('Đã chuyển sang vai trò: Bác sĩ Lê Khôi', 'success');
+      } else if (role === 'RECEPTIONIST') {
+        Session.setUser({
+          id: 'ACC002',
+          name: 'Lễ tân Lễ tân Huy',
+          username: 'letan',
+          role: 'RECEPTIONIST'
+        });
+        showToast('Đã chuyển sang vai trò: Lễ tân Tiếp nhận', 'info');
+      } else if (role === 'ADMIN') {
+        Session.setUser({
+          id: 'ACC001',
+          name: 'Admin Chung',
+          username: 'admin',
+          role: 'ADMIN'
+        });
+        showToast('Đã chuyển sang vai trò: Quản trị viên (ADMIN)', 'success');
+      }
+      renderTopNav(0, 'Dashboard', 'Hệ thống');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+services:
+  phongkham-nhakhoa:
+    build: .
+    container_name: phongkham_nhakhoa_app
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+    volumes:
+      # Mount thư mục data để dữ liệu lưu vĩnh viễn trên máy host
+      - ./data:/app/data
+    restart: unless-stopped

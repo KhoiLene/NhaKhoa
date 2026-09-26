@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 17: Lập kế hoạch điều trị - createTreatmentPlan()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">📋 Lập Phác Đồ & Kế Hoạch Điều Trị</h2>
+        <form id="planForm" onsubmit="handlePlanSubmit(event)">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Chọn Bệnh nhân (*)</label>
+              <select id="planPatientSelect" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bác sĩ chủ trì (*)</label>
+              <select id="planDoctorSelect" class="form-control" required></select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tên Phác đồ điều trị (*)</label>
+            <input type="text" id="planName" class="form-control" placeholder="Phác đồ cấy ghép Implant & phục hình răng sứ R46" required>
+          </div>
+
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label class="form-label" style="margin-bottom:0;">Các Giai đoạn thực hiện (*):</label>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="addStageInputRow()">+ Thêm giai đoạn</button>
+            </div>
+            <div id="stagesContainer" style="display:flex; flex-direction:column; gap:8px;"></div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Chiết khấu / Giảm giá (VNĐ)</label>
+              <input type="number" id="planDiscount" class="form-control" value="0" min="0" oninput="calculatePlanTotalPreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tổng chi phí dự kiến</label>
+              <div id="planTotalEstimatedPreview" style="font-size:1.25rem; font-weight:700; color:var(--primary-dark); margin-top:8px;">0 đ</div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>💾 Thực thi createTreatmentPlan()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">📊 Các Phác Đồ Đã Lập Gần Đây</h2>
+        <div id="plansListContainer" style="display:flex; flex-direction:column; gap:14px; max-height:550px; overflow-y:auto;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/17-create-treatment-plan.js"></script>
+</body>
+</html>

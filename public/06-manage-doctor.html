@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 6: Quản lý bác sĩ - add/update/delete/searchDoctor()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="card" style="padding:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; gap:10px; flex:1; max-width:500px;">
+          <input type="text" id="doctorSearchInput" class="form-control" placeholder="🔍 Tìm kiếm bác sĩ theo tên, chuyên khoa, SĐT..." oninput="handleSearchDoctor()">
+          <button class="btn btn-secondary btn-sm" onclick="handleSearchDoctor()">Tìm kiếm</button>
+        </div>
+        <button class="btn btn-primary" onclick="openAddDoctorModal()">
+          <span>➕ Thêm Bác sĩ Mới</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">
+        <span>Đội ngũ Bác sĩ Nha khoa</span>
+        <span id="doctorCountBadge" class="status-pill status-treating">0 bác sĩ</span>
+      </h2>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mã BS</th>
+              <th>Họ và Tên Bác sĩ</th>
+              <th>Chuyên khoa</th>
+              <th>Số điện thoại</th>
+              <th>Lịch làm việc</th>
+              <th>Khung giờ</th>
+              <th style="text-align:right;">Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="doctorTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Doctor Modal -->
+    <div id="doctorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
+      <div class="card" style="width:100%; max-width:600px; margin:20px; max-height:90vh; overflow-y:auto;">
+        <h2 id="modalDocTitle" class="card-title">Thêm Bác sĩ Mới</h2>
+        <form id="doctorForm" onsubmit="handleDoctorFormSubmit(event)">
+          <input type="hidden" id="modalDocId">
+          <div class="form-group">
+            <label class="form-label">Họ và tên Bác sĩ (*)</label>
+            <input type="text" id="modalDocName" class="form-control" placeholder="BS. CKI ..." required>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Chuyên khoa (*)</label>
+              <input type="text" id="modalDocSpecialty" class="form-control" placeholder="Chỉnh nha, Cấy ghép Implant..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Số điện thoại (*)</label>
+              <input type="tel" id="modalDocPhone" class="form-control" required>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="modalDocEmail" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Khung giờ làm việc</label>
+              <input type="text" id="modalDocHours" class="form-control" value="08:00 - 17:30">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ngày làm việc trong tuần (ngăn cách bằng dấu phẩy)</label>
+            <input type="text" id="modalDocSchedule" class="form-control" value="Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kinh nghiệm / Bằng cấp</label>
+            <textarea id="modalDocExp" class="form-control" rows="2"></textarea>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="closeDoctorModal()">Hủy</button>
+            <button type="submit" class="btn btn-primary">Lưu Bác sĩ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/06-manage-doctor.js"></script>
+</body>
+</html>

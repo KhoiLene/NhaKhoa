@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 22: Lịch sử điều trị - viewTreatmentHistory()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="card" style="padding:16px;">
+      <div style="display:flex; gap:12px; align-items:flex-end; flex-wrap:wrap;">
+        <div class="form-group" style="margin-bottom:0; flex:1; max-width:400px;">
+          <label class="form-label">Chọn Hồ sơ Bệnh nhân cần tra cứu</label>
+          <select id="historyPatientSelect" class="form-control" onchange="handlePatientSelectChange()"></select>
+        </div>
+        <button class="btn btn-primary" onclick="handlePatientSelectChange()">
+          <span>📖 Thực thi viewTreatmentHistory()</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Patient Profile & Summary Stats -->
+    <div id="patientSummaryCard" class="card" style="display:none;"></div>
+
+    <!-- Tabs or Timeline of Medical History -->
+    <div id="historyDetailsSection" style="display:none;">
+      <div class="grid-2">
+        <div>
+          <div class="card">
+            <h3 class="card-title">🩺 Các Lần Khám & Chẩn Đoán</h3>
+            <div id="histExamsList" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">📋 Bệnh Án & Thủ Thuật Can Thiệp</h3>
+            <div id="histRecordsList" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3 class="card-title">🗺️ Phác Đồ Điều Trị & Chỉ Định</h3>
+            <div id="histPlansList" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">💳 Lịch Sử Thanh Toán Viện Phí</h3>
+            <div id="histPaymentsList" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/22-view-treatment-history.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chức năng 8: Đặt lịch khám - createAppointment()</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <main class="page-container">
+    <div id="banner-container"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="card-title">📅 Phiếu Đăng Ký Đặt Lịch Khám</h2>
+        <form id="appointmentForm" onsubmit="handleAppointmentSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Chọn Bệnh nhân (*)</label>
+            <select id="apptPatientSelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Chọn Bác sĩ phụ trách (*)</label>
+            <select id="apptDoctorSelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Dịch vụ khám dự kiến</label>
+            <select id="apptServiceSelect" class="form-control"></select>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Ngày khám (*)</label>
+              <input type="date" id="apptDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Giờ khám (*)</label>
+              <select id="apptTime" class="form-control" required>
+                <option value="08:00">08:00</option>
+                <option value="08:45">08:45</option>
+                <option value="09:30">09:30</option>
+                <option value="10:15">10:15</option>
+                <option value="11:00">11:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:15">14:15</option>
+                <option value="15:00">15:00</option>
+                <option value="15:45">15:45</option>
+                <option value="16:30">16:30</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mô tả triệu chứng / Ghi chú</label>
+            <textarea id="apptNotes" class="form-control" placeholder="Răng sâu đau nhức, cần cạo vôi, tư vấn niềng..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <span>📅 Thực thi createAppointment()</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">💡 Hướng dẫn & Kiểm tra xung đột</h2>
+        <div style="background:#f1f5f9; padding:16px; border-radius:8px; margin-bottom:16px;">
+          <p style="font-size:0.9rem; line-height:1.6;">
+            Hàm <code>createAppointment()</code> tự động xác thực:
+          </p>
+          <ul style="margin-left:20px; font-size:0.88rem; color:#475569; margin-top:8px;">
+            <li>Bác sĩ đã có lịch hẹn trùng vào khung giờ này chưa?</li>
+            <li>Nếu trùng, hệ thống sẽ cảnh báo không cho đặt trùng giờ.</li>
+            <li>Tự động gắn mã lịch hẹn mới và đặt trạng thái <strong>Chờ khám</strong>.</li>
+          </ul>
+        </div>
+
+        <div id="appointmentSuccessBox" style="display:none; padding:16px; background:#f0fdf4; border:1px solid #86efac; border-radius:8px;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/08-create-appointment.js"></script>
+</body>
+</html>
